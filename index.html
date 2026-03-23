@@ -15,45 +15,58 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; min-height: 100vh; overflow-x: hidden; }
   body::before { content:''; position:fixed; top:-200px; left:-200px; width:600px; height:600px; background:radial-gradient(circle,#1db95415 0%,transparent 70%); pointer-events:none; z-index:0; }
-  body::after { content:''; position:fixed; bottom:-200px; right:-200px; width:500px; height:500px; background:radial-gradient(circle,#b388ff10 0%,transparent 70%); pointer-events:none; z-index:0; }
+  body::after  { content:''; position:fixed; bottom:-200px; right:-200px; width:500px; height:500px; background:radial-gradient(circle,#b388ff10 0%,transparent 70%); pointer-events:none; z-index:0; }
   .app { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:40px 24px; }
+
+  /* Header */
   .header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:16px; }
   .logo-area { display:flex; flex-direction:column; gap:6px; }
   .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:28px; letter-spacing:-0.5px; display:flex; align-items:center; gap:10px; }
   .logo-dot { width:10px; height:10px; border-radius:50%; background:var(--green); box-shadow:0 0 12px var(--green); animation:pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{box-shadow:0 0 8px var(--green);}50%{box-shadow:0 0 20px var(--green);} }
   .tagline { font-size:11px; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; }
+
+  /* Setup */
   .setup-banner { background:linear-gradient(135deg,#1a1a26,#12121a); border:1px solid var(--green-dim); border-radius:12px; padding:28px 32px; margin-bottom:32px; position:relative; overflow:hidden; }
   .setup-banner::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--green),transparent); }
   .setup-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
   .setup-steps { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
-  .setup-step { display:flex; align-items:flex-start; gap:12px; font-size:12px; color:var(--text-dim); line-height:1.6; }
-  .step-num { min-width:20px; height:20px; background:var(--green-dim); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--green); font-weight:500; }
+  .setup-step { display:flex; align-items:flex-start; gap:12px; font-size:12px; color:var(--text-dim); line-height:1.7; }
+  .step-num { min-width:20px; height:20px; background:var(--green-dim); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--green); font-weight:500; flex-shrink:0; margin-top:2px; }
   .setup-step a { color:var(--green); text-decoration:none; border-bottom:1px solid var(--green-dim); }
   .setup-step a:hover { border-color:var(--green); }
-  .setup-step code { background:var(--surface2); padding:1px 6px; border-radius:4px; font-size:11px; color:var(--green); }
+  .setup-step code { background:var(--surface2); padding:1px 6px; border-radius:4px; font-size:11px; color:var(--green); word-break:break-all; }
   .input-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .token-input { flex:1; min-width:200px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.2s; }
   .token-input:focus { border-color:var(--green); }
   .token-input::placeholder { color:var(--text-muted); }
   .scope-note { font-size:10px; color:var(--text-muted); background:var(--surface2); border-radius:6px; padding:8px 12px; margin-top:12px; border-left:2px solid var(--accent); }
   .error-msg { color:#ff6b6b; font-size:11px; margin-top:10px; }
+
+  /* Buttons */
   .btn { background:var(--green); color:#000; border:none; border-radius:8px; padding:10px 20px; font-family:'Syne',sans-serif; font-weight:700; font-size:12px; letter-spacing:0.5px; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
   .btn:hover { background:#22d160; transform:translateY(-1px); }
+  .btn:active { transform:translateY(0); }
   .btn-outline { background:transparent; color:var(--green); border:1px solid var(--green-dim); }
   .btn-outline:hover { background:var(--green-glow); border-color:var(--green); }
   .btn-sm { padding:7px 14px; font-size:11px; }
+
+  /* User badge */
   .user-badge { display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:6px 14px 6px 6px; }
   .user-avatar { width:28px; height:28px; border-radius:50%; background:var(--green-dim); overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--green); }
   .user-avatar img { width:100%; height:100%; object-fit:cover; }
   .user-name { font-size:11px; color:var(--text-dim); }
   .logout-btn { background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:10px; font-family:'DM Mono',monospace; padding:0; margin-left:4px; }
   .logout-btn:hover { color:var(--text); }
+
+  /* Controls */
   .controls { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
   .tabs { display:flex; gap:4px; background:var(--surface); border-radius:10px; padding:4px; }
   .tab { padding:7px 16px; border-radius:7px; border:none; font-family:'DM Mono',monospace; font-size:11px; cursor:pointer; color:var(--text-muted); background:transparent; transition:all 0.2s; letter-spacing:0.5px; }
   .tab.active { background:var(--surface2); color:var(--text); border:1px solid var(--border); }
   .tab:hover:not(.active) { color:var(--text-dim); }
+
+  /* Grid & cards */
   .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:16px; }
   .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px; position:relative; overflow:hidden; animation:fadeUp 0.4s ease both; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
@@ -61,8 +74,12 @@
   .card-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
   .card-label::after { content:''; flex:1; height:1px; background:var(--border); }
   .col-5{grid-column:span 5}.col-7{grid-column:span 7}.col-4{grid-column:span 4}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
+
+  /* Radar */
   .radar-wrap { display:flex; justify-content:center; align-items:center; }
   svg.radar { overflow:visible; }
+
+  /* Genres */
   .genre-list { display:flex; flex-direction:column; gap:10px; }
   .genre-row { display:flex; flex-direction:column; gap:4px; }
   .genre-meta { display:flex; justify-content:space-between; align-items:center; }
@@ -70,6 +87,8 @@
   .genre-pct { font-size:10px; color:var(--text-muted); }
   .genre-bar-bg { height:4px; background:var(--surface2); border-radius:2px; overflow:hidden; }
   .genre-bar { height:100%; border-radius:2px; transition:width 1.2s cubic-bezier(0.16,1,0.3,1); }
+
+  /* Tracks */
   .track-list { display:flex; flex-direction:column; gap:8px; }
   .track-row { display:flex; align-items:center; gap:12px; padding:8px 10px; border-radius:8px; border:1px solid transparent; transition:all 0.15s; }
   .track-row:hover { background:var(--surface2); border-color:var(--border); }
@@ -81,20 +100,30 @@
   .track-artist { font-size:10px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .track-energy { width:40px; height:3px; border-radius:2px; background:var(--surface2); overflow:hidden; flex-shrink:0; }
   .track-energy-fill { height:100%; background:var(--green); border-radius:2px; }
+
+  /* Stats */
   .stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
   .stat-box { background:var(--surface2); border-radius:10px; padding:14px 12px; text-align:center; border:1px solid var(--border); }
   .stat-val { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; letter-spacing:-1px; line-height:1; margin-bottom:4px; }
   .stat-key { font-size:9px; color:var(--text-muted); letter-spacing:1.5px; text-transform:uppercase; }
+
+  /* Compare */
   .compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   .compare-col { display:flex; flex-direction:column; gap:8px; }
   .compare-period { font-size:10px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; padding-bottom:8px; border-bottom:1px solid var(--border); margin-bottom:4px; }
   .compare-track { display:flex; align-items:center; gap:8px; font-size:11px; color:var(--text-dim); }
   .compare-num { font-size:9px; color:var(--text-muted); min-width:14px; }
   .compare-name { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  /* Loading */
   .loading { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px; gap:16px; color:var(--text-muted); font-size:12px; }
   .spinner { width:32px; height:32px; border:2px solid var(--border); border-top-color:var(--green); border-radius:50%; animation:spin 0.8s linear infinite; }
   @keyframes spin { to{transform:rotate(360deg);} }
-  @media(max-width:700px){.col-5,.col-7,.col-4,.col-8{grid-column:span 12}.compare-grid{grid-template-columns:1fr}}
+
+  @media(max-width:700px){
+    .col-5,.col-7,.col-4,.col-8{grid-column:span 12}
+    .compare-grid{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
@@ -111,123 +140,179 @@
   <div id="loading-section" style="display:none"><div class="loading"><div class="spinner"></div><span>Fetching your sound...</span></div></div>
   <div id="dashboard" style="display:none"></div>
 </div>
+
 <script>
-  const REDIRECT_URI = window.location.origin + window.location.pathname;
+  // ── AUTH CONFIG ────────────────────────────────────────────────────────────
+  // The callback redirect URI points to our Netlify function.
+  // This is auto-derived from the current hostname.
+  const ORIGIN = window.location.origin;
+  const CALLBACK_URI = ORIGIN + '/.netlify/functions/callback';
   const SCOPES = 'user-top-read user-read-private';
+
+  // ── STATE ──────────────────────────────────────────────────────────────────
   let accessToken = null, userData = null, currentRange = 'medium_term', allData = {};
 
+  // ── AUTH HELPERS ───────────────────────────────────────────────────────────
   function getTokenFromHash() {
     return new URLSearchParams(window.location.hash.substring(1)).get('access_token');
   }
-  function buildAuthURL(id) {
-    const p = new URLSearchParams({client_id:id,response_type:'token',redirect_uri:REDIRECT_URI,scope:SCOPES,show_dialog:'true'});
+
+  function buildAuthURL(clientId) {
+    const state = Math.random().toString(36).substring(2);
+    localStorage.setItem('sp_state', state);
+    const p = new URLSearchParams({
+      client_id:     clientId,
+      response_type: 'code',
+      redirect_uri:  CALLBACK_URI,
+      scope:         SCOPES,
+      state,
+      show_dialog:   'true',
+    });
     return `https://accounts.spotify.com/authorize?${p}`;
   }
+
   function logout() {
-    accessToken=null; userData=null; allData={};
+    accessToken = null; userData = null; allData = {};
     localStorage.removeItem('sp_token');
-    window.location.hash='';
+    window.location.hash = '';
     renderSetup();
   }
+
+  // ── SPOTIFY API ────────────────────────────────────────────────────────────
   async function spFetch(endpoint) {
-    const res = await fetch(`https://api.spotify.com/v1${endpoint}`,{headers:{Authorization:`Bearer ${accessToken}`}});
+    const res = await fetch(`https://api.spotify.com/v1${endpoint}`, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
     if (!res.ok) throw new Error(`Spotify error ${res.status}`);
     return res.json();
   }
+
   async function fetchAll(range) {
     if (allData[range]) return allData[range];
-    const [topTracks,topArtists] = await Promise.all([
+    const [topTracks, topArtists] = await Promise.all([
       spFetch(`/me/top/tracks?limit=20&time_range=${range}`),
-      spFetch(`/me/top/artists?limit=20&time_range=${range}`)
+      spFetch(`/me/top/artists?limit=20&time_range=${range}`),
     ]);
-    const ids = topTracks.items.map(t=>t.id).join(',');
-    let features={audio_features:[]};
-    if(ids){try{features=await spFetch(`/audio-features?ids=${ids}`);}catch(e){}}
-    const data={topTracks:topTracks.items,topArtists:topArtists.items,features:features.audio_features||[]};
-    allData[range]=data; return data;
+    const ids = topTracks.items.map(t => t.id).join(',');
+    let features = { audio_features: [] };
+    if (ids) { try { features = await spFetch(`/audio-features?ids=${ids}`); } catch(e) {} }
+    const data = { topTracks: topTracks.items, topArtists: topArtists.items, features: features.audio_features || [] };
+    allData[range] = data;
+    return data;
   }
-  function avg(features,key){
-    const vals=features.filter(f=>f&&f[key]!=null).map(f=>f[key]);
-    return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:0;
+
+  // ── ANALYTICS ──────────────────────────────────────────────────────────────
+  function avg(features, key) {
+    const vals = features.filter(f => f && f[key] != null).map(f => f[key]);
+    return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
   }
-  function getGenres(artists){
-    const c={};
-    artists.forEach(a=>(a.genres||[]).forEach(g=>{const k=g.split(' ').slice(0,2).join(' ');c[k]=(c[k]||0)+1;}));
-    return Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,8);
+
+  function getGenres(artists) {
+    const c = {};
+    artists.forEach(a => (a.genres || []).forEach(g => {
+      const k = g.split(' ').slice(0, 2).join(' ');
+      c[k] = (c[k] || 0) + 1;
+    }));
+    return Object.entries(c).sort((a, b) => b[1] - a[1]).slice(0, 8);
   }
-  function buildRadar(af){
-    const cx=120,cy=120,r=88,n=6;
-    const keys=['energy','valence','danceability','acousticness','instrumentalness','speechiness'];
-    const labels=['Energy','Mood','Dance','Acoustic','Instru.','Vocal'];
-    const colors=['#1db954','#b388ff','#64b5f6','#ffb347','#ff6b9d','#4fc3f7'];
-    let grid='';
-    [0.25,0.5,0.75,1].forEach(s=>{
-      const pts=keys.map((_,i)=>{const a=(Math.PI*2*i/n)-Math.PI/2;return `${cx+Math.cos(a)*r*s},${cy+Math.sin(a)*r*s}`;}).join(' ');
-      grid+=`<polygon points="${pts}" fill="none" stroke="#ffffff08" stroke-width="1"/>`;
+
+  // ── RADAR SVG ──────────────────────────────────────────────────────────────
+  function buildRadar(af) {
+    const cx=120, cy=120, r=88, n=6;
+    const keys   = ['energy','valence','danceability','acousticness','instrumentalness','speechiness'];
+    const labels = ['Energy','Mood','Dance','Acoustic','Instru.','Vocal'];
+    const colors = ['#1db954','#b388ff','#64b5f6','#ffb347','#ff6b9d','#4fc3f7'];
+    let grid = '';
+    [0.25, 0.5, 0.75, 1].forEach(s => {
+      const pts = keys.map((_, i) => { const a=(Math.PI*2*i/n)-Math.PI/2; return `${cx+Math.cos(a)*r*s},${cy+Math.sin(a)*r*s}`; }).join(' ');
+      grid += `<polygon points="${pts}" fill="none" stroke="#ffffff08" stroke-width="1"/>`;
     });
-    const axes=keys.map((_,i)=>{const a=(Math.PI*2*i/n)-Math.PI/2;return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*r}" y2="${cy+Math.sin(a)*r}" stroke="#ffffff0a" stroke-width="1"/>`;}).join('');
-    const dataPts=keys.map((k,i)=>{const a=(Math.PI*2*i/n)-Math.PI/2;const v=af[k]??0;return `${cx+Math.cos(a)*r*v},${cy+Math.sin(a)*r*v}`;}).join(' ');
-    const lbls=keys.map((k,i)=>{const a=(Math.PI*2*i/n)-Math.PI/2;return `<text x="${cx+Math.cos(a)*(r+22)}" y="${cy+Math.sin(a)*(r+22)}" text-anchor="middle" dominant-baseline="middle" fill="${colors[i]}" font-size="9" font-family="DM Mono,monospace" letter-spacing="1">${labels[i].toUpperCase()}</text>`;}).join('');
-    const dots=keys.map((k,i)=>{const a=(Math.PI*2*i/n)-Math.PI/2;const v=af[k]??0;return `<circle cx="${cx+Math.cos(a)*r*v}" cy="${cy+Math.sin(a)*r*v}" r="3.5" fill="${colors[i]}" opacity="0.9"/>`;}).join('');
+    const axes    = keys.map((_, i) => { const a=(Math.PI*2*i/n)-Math.PI/2; return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*r}" y2="${cy+Math.sin(a)*r}" stroke="#ffffff0a" stroke-width="1"/>`; }).join('');
+    const dataPts = keys.map((k, i) => { const a=(Math.PI*2*i/n)-Math.PI/2; const v=af[k]??0; return `${cx+Math.cos(a)*r*v},${cy+Math.sin(a)*r*v}`; }).join(' ');
+    const lbls    = keys.map((k, i) => { const a=(Math.PI*2*i/n)-Math.PI/2; return `<text x="${cx+Math.cos(a)*(r+22)}" y="${cy+Math.sin(a)*(r+22)}" text-anchor="middle" dominant-baseline="middle" fill="${colors[i]}" font-size="9" font-family="DM Mono,monospace" letter-spacing="1">${labels[i].toUpperCase()}</text>`; }).join('');
+    const dots    = keys.map((k, i) => { const a=(Math.PI*2*i/n)-Math.PI/2; const v=af[k]??0; return `<circle cx="${cx+Math.cos(a)*r*v}" cy="${cy+Math.sin(a)*r*v}" r="3.5" fill="${colors[i]}" opacity="0.9"/>`; }).join('');
     return `<svg class="radar" width="244" height="244" viewBox="0 0 244 244">${grid}${axes}<polygon points="${dataPts}" fill="#1db95422" stroke="#1db954" stroke-width="1.5" stroke-linejoin="round"/>${dots}${lbls}</svg>`;
   }
-  function renderSetup(error=''){
-    document.getElementById('user-area').innerHTML='';
-    document.getElementById('controls-section').style.display='none';
-    document.getElementById('dashboard').style.display='none';
-    document.getElementById('loading-section').style.display='none';
-    const savedId=localStorage.getItem('sp_client_id')||'';
-    document.getElementById('setup-section').innerHTML=`
+
+  // ── RENDER SETUP ───────────────────────────────────────────────────────────
+  function renderSetup(error = '') {
+    document.getElementById('user-area').innerHTML = '';
+    ['controls-section','dashboard','loading-section'].forEach(id => document.getElementById(id).style.display = 'none');
+    const savedId = localStorage.getItem('sp_client_id') || '';
+    document.getElementById('setup-section').innerHTML = `
       <div class="setup-banner">
         <div class="setup-title">⚡ Connect your Spotify</div>
         <div class="setup-steps">
-          <div class="setup-step"><div class="step-num">1</div><div>Go to <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a> → Create App</div></div>
-          <div class="setup-step"><div class="step-num">2</div><div>Set Redirect URI to: <code>${REDIRECT_URI}</code></div></div>
-          <div class="setup-step"><div class="step-num">3</div><div>Copy your Client ID and paste below</div></div>
+          <div class="setup-step"><div class="step-num">1</div><div>Go to <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a> → your app → Edit Settings</div></div>
+          <div class="setup-step"><div class="step-num">2</div><div>Add this exact Redirect URI: <code>${CALLBACK_URI}</code></div></div>
+          <div class="setup-step"><div class="step-num">3</div><div>In Netlify → Site Settings → Environment Variables, add:<br>
+            <code>SPOTIFY_CLIENT_ID</code>, <code>SPOTIFY_CLIENT_SECRET</code>, <code>SPOTIFY_REDIRECT_URI</code> (same as step 2)</div></div>
+          <div class="setup-step"><div class="step-num">4</div><div>Paste your Client ID below and authorize</div></div>
         </div>
         <div class="input-row">
           <input class="token-input" id="client-id-input" type="text" placeholder="Paste your Spotify Client ID here..." value="${savedId}"/>
           <button class="btn" onclick="handleConnect()">Authorize with Spotify →</button>
         </div>
-        ${error?`<div class="error-msg">${error}</div>`:''}
-        <div class="scope-note">Read-only access to your top tracks and artists. Nothing is shared externally.</div>
+        ${error ? `<div class="error-msg">${error}</div>` : ''}
+        <div class="scope-note">Read-only access to your top tracks and artists. Nothing is shared or stored externally.</div>
       </div>`;
   }
-  function renderControls(){
-    document.getElementById('controls-section').style.display='block';
-    document.getElementById('controls-section').innerHTML=`
+
+  function renderControls() {
+    document.getElementById('controls-section').style.display = 'block';
+    document.getElementById('controls-section').innerHTML = `
       <div class="controls">
         <div class="tabs">
-          <button class="tab ${currentRange==='short_term'?'active':''}" onclick="switchRange('short_term')">Last 4 Weeks</button>
+          <button class="tab ${currentRange==='short_term' ?'active':''}" onclick="switchRange('short_term')">Last 4 Weeks</button>
           <button class="tab ${currentRange==='medium_term'?'active':''}" onclick="switchRange('medium_term')">6 Months</button>
-          <button class="tab ${currentRange==='long_term'?'active':''}" onclick="switchRange('long_term')">All Time</button>
+          <button class="tab ${currentRange==='long_term'  ?'active':''}" onclick="switchRange('long_term')">All Time</button>
         </div>
         <button class="btn btn-outline btn-sm" onclick="switchRange('compare')">Compare Eras</button>
       </div>`;
   }
-  function renderUserBadge(){
-    if(!userData)return;
-    const img=userData.images?.[0]?.url;
-    document.getElementById('user-area').innerHTML=`
+
+  function renderUserBadge() {
+    if (!userData) return;
+    const img = userData.images?.[0]?.url;
+    document.getElementById('user-area').innerHTML = `
       <div class="user-badge">
-        <div class="user-avatar">${img?`<img src="${img}"/>`:'♪'}</div>
-        <span class="user-name">${userData.display_name||userData.id}</span>
+        <div class="user-avatar">${img ? `<img src="${img}"/>` : '♪'}</div>
+        <span class="user-name">${userData.display_name || userData.id}</span>
         <button class="logout-btn" onclick="logout()">× disconnect</button>
       </div>`;
   }
-  function renderDashboard(data){
-    const {topTracks,topArtists,features}=data;
-    document.getElementById('loading-section').style.display='none';
-    document.getElementById('dashboard').style.display='block';
-    const af={energy:avg(features,'energy'),valence:avg(features,'valence'),danceability:avg(features,'danceability'),acousticness:avg(features,'acousticness'),instrumentalness:avg(features,'instrumentalness'),speechiness:avg(features,'speechiness'),tempo:avg(features,'tempo')};
-    const genres=getGenres(topArtists);
-    const total=genres.reduce((s,[,c])=>s+c,0);
-    const bc=['#1db954','#b388ff','#64b5f6','#ffb347','#ff6b9d','#4fc3f7','#80cbc4','#ce93d8'];
-    const ml=af.valence>0.65?['Euphoric','#1db954']:af.valence>0.45?['Balanced','#64b5f6']:af.valence>0.25?['Moody','#b388ff']:['Dark','#ff6b9d'];
-    const el=af.energy>0.7?'High Energy':af.energy>0.45?'Moderate':'Chill';
-    const genreBars=genres.map(([name,count],i)=>{const pct=Math.round(count/total*100);return `<div class="genre-row"><div class="genre-meta"><span class="genre-name">${name}</span><span class="genre-pct">${pct}%</span></div><div class="genre-bar-bg"><div class="genre-bar" data-w="${pct}" style="width:0%;background:${bc[i%bc.length]}"></div></div></div>`;}).join('');
-    const trackRows=topTracks.slice(0,8).map((t,i)=>{const feat=features[i];const ep=feat?Math.round(feat.energy*100):0;const img=t.album?.images?.[2]?.url||t.album?.images?.[0]?.url;return `<div class="track-row"><span class="track-num">${i+1}</span><div class="track-art">${img?`<img src="${img}"/>`:'♪'}</div><div class="track-info"><div class="track-name">${t.name}</div><div class="track-artist">${t.artists.map(a=>a.name).join(', ')}</div></div><div class="track-energy"><div class="track-energy-fill" style="width:${ep}%"></div></div></div>`;}).join('');
-    document.getElementById('dashboard').innerHTML=`
+
+  // ── RENDER DASHBOARD ───────────────────────────────────────────────────────
+  function renderDashboard(data) {
+    const { topTracks, topArtists, features } = data;
+    document.getElementById('loading-section').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+
+    const af = {
+      energy: avg(features,'energy'), valence: avg(features,'valence'),
+      danceability: avg(features,'danceability'), acousticness: avg(features,'acousticness'),
+      instrumentalness: avg(features,'instrumentalness'), speechiness: avg(features,'speechiness'),
+      tempo: avg(features,'tempo'),
+    };
+    const genres = getGenres(topArtists);
+    const total  = genres.reduce((s, [, c]) => s + c, 0);
+    const bc = ['#1db954','#b388ff','#64b5f6','#ffb347','#ff6b9d','#4fc3f7','#80cbc4','#ce93d8'];
+    const ml = af.valence > 0.65 ? ['Euphoric','#1db954'] : af.valence > 0.45 ? ['Balanced','#64b5f6'] : af.valence > 0.25 ? ['Moody','#b388ff'] : ['Dark','#ff6b9d'];
+    const el = af.energy > 0.7 ? 'High Energy' : af.energy > 0.45 ? 'Moderate' : 'Chill';
+
+    const genreBars  = genres.map(([name, count], i) => {
+      const pct = Math.round(count / total * 100);
+      return `<div class="genre-row"><div class="genre-meta"><span class="genre-name">${name}</span><span class="genre-pct">${pct}%</span></div><div class="genre-bar-bg"><div class="genre-bar" data-w="${pct}" style="width:0%;background:${bc[i%bc.length]}"></div></div></div>`;
+    }).join('');
+
+    const trackRows = topTracks.slice(0, 8).map((t, i) => {
+      const feat = features[i];
+      const ep   = feat ? Math.round(feat.energy * 100) : 0;
+      const img  = t.album?.images?.[2]?.url || t.album?.images?.[0]?.url;
+      return `<div class="track-row"><span class="track-num">${i+1}</span><div class="track-art">${img ? `<img src="${img}"/>` : '♪'}</div><div class="track-info"><div class="track-name">${t.name}</div><div class="track-artist">${t.artists.map(a => a.name).join(', ')}</div></div><div class="track-energy"><div class="track-energy-fill" style="width:${ep}%"></div></div></div>`;
+    }).join('');
+
+    document.getElementById('dashboard').innerHTML = `
       <div class="grid">
         <div class="card col-5"><div class="card-label">Sonic Fingerprint</div><div class="radar-wrap">${buildRadar(af)}</div></div>
         <div class="card col-7"><div class="card-label">Genre Breakdown</div><div class="genre-list">${genreBars}</div></div>
@@ -251,62 +336,83 @@
           <div class="track-list">${trackRows}</div>
         </div>
       </div>`;
-    setTimeout(()=>{document.querySelectorAll('.genre-bar').forEach(el=>{el.style.width=el.dataset.w+'%';});},80);
+
+    setTimeout(() => { document.querySelectorAll('.genre-bar').forEach(el => { el.style.width = el.dataset.w + '%'; }); }, 80);
   }
-  async function renderCompare(){
-    document.getElementById('loading-section').style.display='flex';
-    document.getElementById('dashboard').innerHTML='';
-    document.getElementById('dashboard').style.display='block';
-    try{
-      const datasets=await Promise.all(['short_term','medium_term','long_term'].map(r=>fetchAll(r)));
-      document.getElementById('loading-section').style.display='none';
-      const labels=['Last 4 Weeks','6 Months','All Time'];
-      const cols=datasets.map((data,i)=>{
-        const tracks=data.topTracks.slice(0,5).map((t,j)=>`<div class="compare-track"><span class="compare-num">${j+1}</span><span class="compare-name">${t.name}</span></div>`).join('');
-        const e=avg(data.features,'energy'),v=avg(data.features,'valence'),d=avg(data.features,'danceability');
-        return `<div class="compare-col"><div class="compare-period">${labels[i]}</div>${tracks}<div style="margin-top:12px;display:flex;flex-direction:column;gap:6px">${[['Energy',e,'#1db954'],['Mood',v,'#b388ff'],['Dance',d,'#64b5f6']].map(([lbl,val,col])=>`<div><div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-muted);margin-bottom:3px"><span>${lbl}</span><span>${Math.round(val*100)}</span></div><div style="height:3px;background:var(--surface2);border-radius:2px"><div style="height:100%;width:${Math.round(val*100)}%;background:${col};border-radius:2px"></div></div></div>`).join('')}</div></div>`;
+
+  // ── RENDER COMPARE ─────────────────────────────────────────────────────────
+  async function renderCompare() {
+    document.getElementById('loading-section').style.display = 'flex';
+    document.getElementById('dashboard').innerHTML = '';
+    document.getElementById('dashboard').style.display = 'block';
+    try {
+      const datasets = await Promise.all(['short_term','medium_term','long_term'].map(r => fetchAll(r)));
+      document.getElementById('loading-section').style.display = 'none';
+      const labels = ['Last 4 Weeks', '6 Months', 'All Time'];
+      const cols = datasets.map((data, i) => {
+        const tracks = data.topTracks.slice(0, 5).map((t, j) => `<div class="compare-track"><span class="compare-num">${j+1}</span><span class="compare-name">${t.name}</span></div>`).join('');
+        const e = avg(data.features,'energy'), v = avg(data.features,'valence'), d = avg(data.features,'danceability');
+        return `<div class="compare-col"><div class="compare-period">${labels[i]}</div>${tracks}<div style="margin-top:12px;display:flex;flex-direction:column;gap:6px">${[['Energy',e,'#1db954'],['Mood',v,'#b388ff'],['Dance',d,'#64b5f6']].map(([lbl,val,col]) => `<div><div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-muted);margin-bottom:3px"><span>${lbl}</span><span>${Math.round(val*100)}</span></div><div style="height:3px;background:var(--surface2);border-radius:2px"><div style="height:100%;width:${Math.round(val*100)}%;background:${col};border-radius:2px"></div></div></div>`).join('')}</div></div>`;
       }).join('');
-      document.getElementById('dashboard').innerHTML=`<div class="grid"><div class="card col-12"><div class="card-label">Era Comparison — Top 5 Tracks + Audio Profile</div><div class="compare-grid">${cols}</div></div></div>`;
-    }catch(e){
-      document.getElementById('loading-section').style.display='none';
-      document.getElementById('dashboard').innerHTML=`<div style="color:#ff6b6b;font-size:12px;padding:20px">Error: ${e.message}<br><br><button class="btn btn-outline" onclick="logout()">Disconnect & retry</button></div>`;
+      document.getElementById('dashboard').innerHTML = `<div class="grid"><div class="card col-12"><div class="card-label">Era Comparison — Top 5 Tracks + Audio Profile</div><div class="compare-grid">${cols}</div></div></div>`;
+    } catch(e) {
+      document.getElementById('loading-section').style.display = 'none';
+      document.getElementById('dashboard').innerHTML = `<div style="color:#ff6b6b;font-size:12px;padding:20px">Error: ${e.message}<br><br><button class="btn btn-outline" onclick="logout()">Disconnect & retry</button></div>`;
     }
   }
-  function handleConnect(){
-    const id=document.getElementById('client-id-input')?.value?.trim();
-    if(!id){alert('Please paste your Spotify Client ID first.');return;}
-    localStorage.setItem('sp_client_id',id);
-    window.location.href=buildAuthURL(id);
+
+  // ── INTERACTIONS ───────────────────────────────────────────────────────────
+  function handleConnect() {
+    const id = document.getElementById('client-id-input')?.value?.trim();
+    if (!id) { alert('Please paste your Spotify Client ID first.'); return; }
+    localStorage.setItem('sp_client_id', id);
+    window.location.href = buildAuthURL(id);
   }
-  async function switchRange(range){
-    currentRange=range; renderControls();
-    if(range==='compare'){await renderCompare();return;}
-    document.getElementById('loading-section').style.display='flex';
-    document.getElementById('dashboard').style.display='none';
-    try{renderDashboard(await fetchAll(range));}
-    catch(e){
-      document.getElementById('loading-section').style.display='none';
-      document.getElementById('dashboard').style.display='block';
-      document.getElementById('dashboard').innerHTML=`<div style="color:#ff6b6b;font-size:12px;padding:20px">Error: ${e.message}<br><br><button class="btn btn-outline" onclick="logout()">Disconnect & retry</button></div>`;
+
+  async function switchRange(range) {
+    currentRange = range;
+    renderControls();
+    if (range === 'compare') { await renderCompare(); return; }
+    document.getElementById('loading-section').style.display = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+    try { renderDashboard(await fetchAll(range)); }
+    catch(e) {
+      document.getElementById('loading-section').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('dashboard').innerHTML = `<div style="color:#ff6b6b;font-size:12px;padding:20px">Error: ${e.message}<br><br><button class="btn btn-outline" onclick="logout()">Disconnect & retry</button></div>`;
     }
   }
-  async function init(){
-    const token=getTokenFromHash();
-    if(token){accessToken=token;localStorage.setItem('sp_token',token);history.replaceState(null,'',window.location.pathname);}
-    else{const c=localStorage.getItem('sp_token');if(c)accessToken=c;}
-    if(!accessToken){renderSetup();return;}
-    document.getElementById('setup-section').innerHTML='';
-    try{userData=await spFetch('/me');}
-    catch(e){localStorage.removeItem('sp_token');renderSetup('Session expired. Please reconnect.');return;}
-    renderUserBadge(); renderControls();
-    document.getElementById('loading-section').style.display='flex';
-    try{renderDashboard(await fetchAll(currentRange));}
-    catch(e){
-      document.getElementById('loading-section').style.display='none';
-      document.getElementById('dashboard').style.display='block';
-      document.getElementById('dashboard').innerHTML=`<div style="color:#ff6b6b;font-size:12px;padding:20px">Error: ${e.message}<br><br><button class="btn btn-outline" onclick="logout()">Disconnect & retry</button></div>`;
+
+  // ── INIT ───────────────────────────────────────────────────────────────────
+  async function init() {
+    // Token lands in URL hash after our Netlify function redirects back
+    const token = getTokenFromHash();
+    if (token) {
+      accessToken = token;
+      localStorage.setItem('sp_token', token);
+      history.replaceState(null, '', window.location.pathname);
+    } else {
+      const cached = localStorage.getItem('sp_token');
+      if (cached) accessToken = cached;
+    }
+
+    if (!accessToken) { renderSetup(); return; }
+    document.getElementById('setup-section').innerHTML = '';
+
+    try { userData = await spFetch('/me'); }
+    catch(e) { localStorage.removeItem('sp_token'); renderSetup('Session expired. Please reconnect.'); return; }
+
+    renderUserBadge();
+    renderControls();
+    document.getElementById('loading-section').style.display = 'flex';
+    try { renderDashboard(await fetchAll(currentRange)); }
+    catch(e) {
+      document.getElementById('loading-section').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('dashboard').innerHTML = `<div style="color:#ff6b6b;font-size:12px;padding:20px">Error: ${e.message}<br><br><button class="btn btn-outline" onclick="logout()">Disconnect & retry</button></div>`;
     }
   }
+
   init();
 </script>
 </body>
